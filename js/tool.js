@@ -83,9 +83,13 @@ var tool = {
 		if(e){
 			e.stopPropagation();
 		}
-		
+        var lis = tool.getAllLi();
 //		切换是否选择的开关
-		if(!content.checkedAll){
+		if(content.checkedAll==false){
+
+			for(var i=0;i<lis.length;i++){
+                lis[i].onoff = false;
+			}
 			content.btn_checkedAll.className = "";
 			$("#part_file li").find("span").css({
 				"display":"none"
@@ -98,6 +102,9 @@ var tool = {
 
 		}
 		else{
+            for(var i=0;i<lis.length;i++){
+                lis[i].onoff = true;
+            }
 			content.btn_checkedAll.className = "is_checked";
 			$("#part_file li").find("span").css({
 				"display":"block"

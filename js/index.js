@@ -56,6 +56,7 @@ globleFn.onHashChange();
 	})
 //	全选的时候
 	content.btn_checkedAll.onclick = function(){
+
 		content.checkedAll =!content.checkedAll;
 		tool.checkAll();
 	};

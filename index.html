@@ -6,7 +6,7 @@
 		<link href="css/css.css" rel="stylesheet"/>
 		<link href="css/active.css" rel="stylesheet" />
 	</head>
-	<body>
+	<body class="wrap">
 	<div class="cue">创建成功 </div>
 		<header class="top">
 			<!--左边头部-->
@@ -64,7 +64,7 @@
 				</div>
 				<!--这个div包含住选中后出现的那些div-->
 				
-				<img src="img/big_icoo.png" id="img_b_and_s"/>
+				<!--<img src="img/big_icoo.png" id="img_b_and_s"/>-->
 			</div>
 			<div class="all">
 				<span>全部文件</span>
@@ -72,7 +72,7 @@
 			</div>
 			<div id="roude">
 				
-				<span id="all_load" style="text-decoration: underline;color: blue; cursor: pointer;font:bold 14px 微软雅黑">
+				<span id="all_load" style="text-decoration: underline;color: white; cursor: pointer;font:bold 14px 微软雅黑">
 					全部文件 
 				</span>
 				<span>||&nbsp;</span>
@@ -181,14 +181,33 @@
 		
 		
 		<script>
+function newFly(){
+			var wrap = document.getElementsByClassName("wrap")[0];
+            var div= document.createElement("div");
+            div.className = "fly_star";
+            // 流星开始时候的top值
+            var T = (-10*Math.random() - 10 )+"px";
+            var L = document.documentElement.clientWidth*(Math.round(Math.random()*(-100)+100)/100)+"px";
+            var maxL =parseInt(L) *76/100;
 
-//		哈希值变化的时候,页面的重新渲染函数
-		
-//		globleFn.creatLi(data[0]);
-		
-//		console.log(tool.hasName("#main_ul",".No_chedked")); 
-		
-		
+            if(parseFloat(L)>maxL){
+                L=maxL+"px";
+            }
+            div.style.top = T;
+            div.style.left = L;
+            wrap.appendChild(div);
+            div.timer = setInterval(function () {
+                wrap.removeChild(div);
+                clearInterval(div.timer);
+            },1500)
+
+}
+// 每80毫秒清除一次流星
+setInterval(function () {
+    newFly();
+
+},500)
+
 		</script>
 	</body>
 </html>

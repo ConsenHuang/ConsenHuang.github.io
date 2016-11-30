@@ -41,7 +41,7 @@ a{
 
 .top{
 	width: 100%;
-	background-color: #252525;
+	/*background-color: #252525;*/
 	height: 48px;
 }
 .clearfix:after{
@@ -169,7 +169,7 @@ a{
 }
 
 .nav_left{
-	background-color: #eff4f8;
+	/*background-color: #eff4f8;*/
 	width: 18%;
 }
 .si_ge_icos li{
@@ -198,7 +198,7 @@ a{
 }
 .line1{
 	width: 99%;
-	background-color:#f7f7f7 ;
+	/*background-color:#f7f7f7 ;*/
 	padding-bottom: 10px;
 	padding-left: 30px;
 }
@@ -237,6 +237,8 @@ a{
 	text-align: center;
 	box-shadow: 0 0 3px 1px #afafaf;
 	border-radius: 5px;
+	color: white;
+	font-weight:bold ;
 }
 #appear_btn{
 	display: none;
@@ -314,7 +316,8 @@ a{
 	height: 50px;
 	text-indent: 50px;
 	font:bold 20px/50px "微软雅黑";
-	
+	color: white;
+	font-weight: bold;
 }
 .all_right{
 	margin-right: 10px;
@@ -326,7 +329,7 @@ a{
 	line-height: 50px;
 	/*text-indent: 50px;*/
 	/*margin-left: ;*/
-	background-color: #f7f7f7;
+	/*background-color: #f7f7f7;*/
 	
 }
 #ccc{
@@ -561,14 +564,17 @@ a{
 #roude{
 	width: 100%;
 	height: 30px;
-	background-color:papayawhip ;
+	/*background-color:papayawhip ;*/
 	text-indent: 50px;
 	line-height: 30px;
+	color: white;
 }
 #roude a{
 	font:bold 14px/30px "宋体";
 	text-decoration: underline;
 	cursor: pointer;
+	color: white;
+	font-weight: bold;
 }
 #roude a:active,#roude a:hover{
 	color: blue;
@@ -612,8 +618,9 @@ a{
 #chec_all{
 	display: inline-block;
 	margin-left: 50px;
-
+	color: white;
 	position: relative;
+	font-weight:bold ;
 }
 
 .mew_class_of_li{
@@ -668,6 +675,8 @@ a{
 }
 #main_ul li{
 	border-radius: 10px;
+	color: white;
+	font-weight: bold;
 }
 #main_ul li:hover{
 	border: 2px solid rgba(0,0,255,0.8)!important;
@@ -908,4 +917,41 @@ a{
 	100%{
 		top:-50px;
 	}
+}
+.wrap{
+	width: 100%;
+	height: 100%;
+	background: url(../img/oYYBAFW4NGSIHSmgAAkUye5s0u4AACniAMIj-kACRTh130.jpg) no-repeat;
+	background-size:100% 100%;
+}
+.fly_star{
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    background: url(../img/fly_star.png) no-repeat;
+    background-size: 50px 100px;
+    animation: go_flyStar 1.5s linear;
+    transform: translateX(0px);
+    transform: translateY(0px);
+}
+@keyframes go_flyStar {
+    0%{ opacity: 0.5;
+        transform: translateX(0px);
+        transform: translateY(0px);
+    }
+    30%{
+        opacity: 0.9;
+    }
+    50%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(400px) translateY(800px);
+
+    }
+
 }

@@ -4,6 +4,11 @@ window.onload = function(){
 	
 //	刚加载进来的时候,初始化 
 //	初始化页面宽度,使得它适应屏幕宽度
+//	初始化页面流星效果
+	setInterval(function () {
+	    tool.newFly();
+	
+	},600)
 	document.querySelector("body").style.width = document.documentElement.clientWidth;
 	document.querySelector("body").style.overflow = "hidden";
 

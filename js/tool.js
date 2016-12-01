@@ -116,6 +116,26 @@ var tool = {
 			})
 		}
 		
-}
+	},
+	newFly: function newFly(){
+			var wrap = document.getElementsByClassName("wrap")[0];
+            var div= document.createElement("div");
+            div.className = "fly_star";
+            // 流星开始时候的top值
+            var T = (-10*Math.random() - 10 )+"px";
+            var L = document.documentElement.clientWidth*(Math.round(Math.random()*(-100)+100)/100)+"px";
+            var maxL =parseInt(L) *76/100;
+
+            if(parseFloat(L)>maxL){
+                L=maxL+"px";
+            }
+            div.style.top = T;
+            div.style.left = L;
+            wrap.appendChild(div);
+            div.timer = setInterval(function () {
+                wrap.removeChild(div);
+                clearInterval(div.timer);
+            },1500)
+	}
 
 }

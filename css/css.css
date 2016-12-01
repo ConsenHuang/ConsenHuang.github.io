@@ -832,7 +832,7 @@ a{
 @-webkit-keyframes small_ul_go_back{
 	0{top: 400px;}
 	20%{top: 420px;}
-	100%{top:-1000px}
+	100%{top:-1000px;}
 }
 .real_small_ul{
 	height: 320px;
@@ -925,7 +925,6 @@ a{
 	background-size:100% 100%;
 	position: relative;
 	z-index: 0;
-	display: none;
 }
 .fly_star{
     width: 50px;

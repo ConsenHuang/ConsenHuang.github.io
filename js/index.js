@@ -1,59 +1,15 @@
 
 //业务操作
-$(document).ready(function() { 
-	var n = 0;
-	var L = (document.documentElement.clientWidth/2) -400 +"px";
-	$("#bar").css({
-		position: "absolute",
-		top:"300px",
-		width: "800px",
-		height: "20px",
-		left:L
-	});
-	var _num = 0;
-	window.timer0 = setInterval(function(){
-		_num+=1;
-		$("#relbar").css({
-			width: (_num) +"%"
-		})
-		
-	},200)
-	window.timer1 = setInterval(function(){
-		n++;
-		document.getElementById("miao").innerHTML = n;
-		console.log(n)
-	},1000)
-	
-})
 window.onload = function(){
-	$("#relbar").css({
-			width: 100 +"%"
-		})
-
-	setTimeout(function(){
-		$("#bar").css({
-			display:"none"
-		})
-		window.timer0 = window.timer1 = null;
-	},200)
-		
-		
-		$(".wrap").css({
-			display:"block"
-		})
-	
 	
 //	刚加载进来的时候,初始化 
 //	初始化页面宽度,使得它适应屏幕宽度
-//	初始化页面流星效果
-	
-	setInterval(function () {
-	    tool.newFly();
-	
-	},600)
-	$(".wrap").css({
-		height:document.documentElement.clientHeight + "px"
-	})
+    setInterval(function () {
+        tool.newFly();
+
+    },600);
+
+
 	document.querySelector("body").style.width = document.documentElement.clientWidth;
 	document.querySelector("body").style.overflow = "hidden";
 
@@ -106,7 +62,6 @@ globleFn.onHashChange();
 	})
 //	全选的时候
 	content.btn_checkedAll.onclick = function(){
-
 		content.checkedAll =!content.checkedAll;
 		tool.checkAll();
 	};
@@ -117,7 +72,7 @@ globleFn.onHashChange();
 	$("#d5").on("click",function(e){
 //		弹出框
 //		如果一个都没有选中,那么显示请选择文件
-		var lis = document.getElementsByTagName("li");
+		var lis = tool.getAllLi();
 		
 		var n = 0;
 		for (var i = 0; i < lis.length; i++) {
@@ -131,18 +86,20 @@ globleFn.onHashChange();
 			alert("请选择需要删除的文件");
 			return;
 		}
-		
-		
-		$("#warming").css({
-			"animation": "warm 1.5s",
-			"animation-fill-mode":"forwards"
-		})
+		else{
+            $("#warming").css({
+                "animation": "warm 1.5s",
+                "animation-fill-mode":"forwards"
+            })
 //		要改变#warming的top值
-		$("#warming").on("webkitAnimationEnd",function(){
-			$("#warming").css({
-				top:"300px"
-			})
-		})
+            $("#warming").on("webkitAnimationEnd",function(){
+                $("#warming").css({
+                    top:"300px"
+                })
+            })
+		}
+		
+
 	})
 //	删除的yes点击时候的效果
 	$(".confirm_yes").eq(0).on("click",function(e){

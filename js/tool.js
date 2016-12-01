@@ -83,13 +83,9 @@ var tool = {
 		if(e){
 			e.stopPropagation();
 		}
-        var lis = tool.getAllLi();
+		var lis = tool.getAllLi();
 //		切换是否选择的开关
 		if(content.checkedAll==false){
-
-			for(var i=0;i<lis.length;i++){
-                lis[i].onoff = false;
-			}
 			content.btn_checkedAll.className = "";
 			$("#part_file li").find("span").css({
 				"display":"none"
@@ -99,12 +95,11 @@ var tool = {
 			$("#main_ul li").css({
 				 "border": "2px solid transparent"
 			})
-
+			for(var i=0;i<lis.length;i++){
+                lis[i].onoff = false;
+			}
 		}
 		else{
-            for(var i=0;i<lis.length;i++){
-                lis[i].onoff = true;
-            }
 			content.btn_checkedAll.className = "is_checked";
 			$("#part_file li").find("span").css({
 				"display":"block"
@@ -114,28 +109,31 @@ var tool = {
 			$("#main_ul li").css({
 				 "border": "2px solid blue"
 			})
+            for(var i=0;i<lis.length;i++){
+                lis[i].onoff = true;
+            }
 		}
 		
 	},
-	newFly: function newFly(){
-			var wrap = document.getElementsByClassName("wrap")[0];
-            var div= document.createElement("div");
-            div.className = "fly_star";
-            // 流星开始时候的top值
-            var T = (-10*Math.random() - 10 )+"px";
-            var L = document.documentElement.clientWidth*(Math.round(Math.random()*(-100)+100)/100)+"px";
-            var maxL =parseInt(L) *76/100;
+    newFly: function newFly(wrap){
+    var wrap = document.getElementsByClassName("wrap")[0];
+    var div= document.createElement("div");
+    div.className = "fly_star";
+    // 流星开始时候的top值
+    var T = (-10*Math.random() - 10 )+"px";
+    var L = document.documentElement.clientWidth*(Math.round(Math.random()*(-100)+100)/100)+"px";
+    var maxL =parseInt(L) *76/100;
 
-            if(parseFloat(L)>maxL){
-                L=maxL+"px";
-            }
-            div.style.top = T;
-            div.style.left = L;
-            wrap.appendChild(div);
-            div.timer = setInterval(function () {
-                wrap.removeChild(div);
-                clearInterval(div.timer);
-            },1500)
-	}
+    if(parseFloat(L)>maxL){
+        L=maxL+"px";
+    }
+    div.style.top = T;
+    div.style.left = L;
+    wrap.appendChild(div);
+    div.timer = setInterval(function () {
+        wrap.removeChild(div);
+        clearInterval(div.timer);
+    },1500)
+}
 
 }

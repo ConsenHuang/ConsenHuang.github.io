@@ -57,9 +57,7 @@ var intry = document.querySelector("#intry");
 
 document.addEventListener("touchstart",function(e){
 	elements.starPosition = e.changedTouches[0].pageY;
-	
-	
-	})
+})
 document.addEventListener("touchend",function(e){
 	e.preventDefault();
 	elements.endPoistion = e.changedTouches[0].pageY;

@@ -130,7 +130,7 @@
   position: absolute;
 }
 .shake {
-  animation: no_touch 0.3s linear;
+  animation: no_touch 0.1s linear;
 }
 @keyframes no_touch {
   0% {
@@ -252,4 +252,32 @@
 }
 .bac_to_begin {
   bottom: 2.5rem;
+}
+.jindu_box {
+  position: absolute;
+  width: 11.5rem;
+  height: 0.65rem;
+  background-color: #243367 ;
+  border: 0.075rem solid #4091dc;
+  bottom: 3rem;
+  left: 2.25rem;
+  border-radius: 0.325rem;
+  overflow: hidden;
+  z-index: 99;
+}
+.jindu_box #inner_jindu {
+  width: 0;
+  height: 100%;
+  background-color: #4091dc;
+}
+#worl_inner_jindu {
+  height: 0.75rem;
+  font-size: 0.5rem;
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  color: white;
+  letter-spacing: 0.25rem;
+  text-align: center;
+  font-weight: bold;
 }

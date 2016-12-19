@@ -130,7 +130,7 @@
     position: absolute;
 }
 .shake{
-    animation:no_touch 0.3s linear;
+    animation:no_touch 0.1s linear;
 }
 @keyframes no_touch{
     0%{
@@ -256,4 +256,34 @@
 }
 .bac_to_begin{
     bottom:2.5rem;
+}
+.jindu_box{
+    position: absolute;
+    width: 460/@r;
+    height: 26/@r;
+    background-color:#243367 ;
+    border: 3/@r solid #4091dc;
+    bottom: 120/@r;
+    left: 90/@r;
+    border-radius: 13/@r;
+    overflow: hidden;
+    z-index:99;
+}
+.jindu_box #inner_jindu{
+    width: 0;
+    height: 100%;
+    background-color:#4091dc;
+}
+#worl_inner_jindu{
+    height: 30/@r;
+    font-size:20/@r ;
+//  background: red;
+    z-index:999;
+    position:absolute;
+    width:100%;
+    color:white;
+    letter-spacing:10/@r;
+    text-align:center;
+    font-weight:bold;
+    
 }

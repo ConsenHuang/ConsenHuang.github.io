@@ -73,7 +73,7 @@ var globleFn = {
 				if(elements.firstPageEndNum==elements.firstPageImgs.length){
 					elements.jindu_box.style.display = "none";
 				}
-				console.log();
+//				console.log();
 			}
 		
 		}

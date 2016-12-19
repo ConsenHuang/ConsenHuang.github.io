@@ -14,11 +14,51 @@ var elements = {
 //	游戏结束时候的关数
 	ending_guan_shu:document.getElementById("ending_guan_shu"),
 //	游戏结束时候,杀死的怪物数量
-	ending_num_monsters:document.getElementById("ending_num_monsters")
+	ending_num_monsters:document.getElementById("ending_num_monsters"),
+//	进度条
+	inner_jindu:document.querySelector("#inner_jindu"),
+//	装进度条的box
+	jindu_box:document.querySelector("#jindu_box"),
+//	图片库
+	imgs:[
+		"img_game/begin_game.png",
+		"img_game/manster1.png",
+		"img_game/manster1d.png",
+		"img_game/manster2.png",
+		"img_game/manster2d.png",
+		"img_game/manster3.png",
+		"img_game/manster3d.png",
+		"img_game/manster4.png",
+		"img_game/manster4d.png",
+		"img_game/time_ico.png",
+		"img/musicplay.png",
+		"img/musicstop.png",
+		"img/up_ico.png"
+	]
 }
 
+//初始化进度条
+function _load(){
+		var n = 0;
+		for (var i = 0; i < elements.imgs.length; i++) {
+			var img = document.createElement("img");
+			img.src = elements.imgs[i];
+			img.onload = function(){
+				n++;
+				elements.inner_jindu.style.width =(parseInt((n/elements.imgs.length)*100)) + "%";
+				if(n==elements.imgs.length){
+					elements.jindu_box.style.display = "none";
+					//初始化,当图片加载完成了的时候,让游戏说明弹出来
+					setTimeout(function(){
+						elements.pop.style.top = (document.documentElement.clientHeight/2  -  parseInt(getComputedStyle(pop).height) ) + "px";
+					},500)
+				}
+			}
+		
+		}
+}
 
-
+_load();
 
 //初始化音乐
 elements.music.addEventListener('touchstart',function(e){
@@ -74,7 +114,7 @@ var arrNum = [];
 var mons =[];
 
 //容错处理,看看用户可以接受多少的容错
-var rong_cuo = 30;
+var rong_cuo = 10;
 //初始化画布
 function monGame(){
 	var footH = document.querySelectorAll(".foot")[0].style.height;
@@ -84,19 +124,21 @@ function monGame(){
 //	初始化第一关怪物的数量
 }	
 //关数:
-//1,2,2,3,3,3,4,4,4,4...
+//1,2,2,3,3,3,4,4,4,4...f
 //设置关数函数
 function creatNum(){
 		for (var i = 0; i <Num; i++) {
 			arrNum.push(Num);
 		}
 		Num++;
+//		设置100关
 		if(Num<100){
 			creatNum();
 		}
 }
-
+//创建关数
 creatNum();
+//console.log(Num);
 //console.log(arrNum);
 //创建小怪物在画布上面
 //创建第一只小怪物	传入的参数:{type:1,canvasId:"can",id:new Date(),x:50,y:50,w:108,y:113}
@@ -379,10 +421,11 @@ can.addEventListener("touchstart",function(e){
 	}
 	
 })
+//手指抬起时候事件
 can.addEventListener("touchend",function(e){
 	setTimeout(function(){
 		tool.removeClassName(page_game,"shake");
-	},500)
+	},150)
 		
 })
 
@@ -457,10 +500,7 @@ function init(){
 }
 //console.log(parseInt(getComputedStyle(elements.pop2).height)/2) ;
 
-//初始化,让游戏说明弹出来
-setTimeout(function(){
-	elements.pop.style.top = (document.documentElement.clientHeight/2  -  parseInt(getComputedStyle(pop).height) ) + "px";
-},500)
+
 
 //点击开始游戏
 elements.begin_game_buttom.addEventListener("touchstart",function(e){
@@ -469,7 +509,7 @@ elements.begin_game_buttom.addEventListener("touchstart",function(e){
 	setTimeout(function(){
 		elements.begin_game_buttom.style.animation = "";
 	},1500);
-	elements.pop.style.top = (-1*document.documentElement.clientHeight/2) + "px"
+	elements.pop.style.top = (-1*document.documentElement.clientHeight) + "px"
 	//执行函数,开启游戏
 	init();
 });
@@ -477,15 +517,14 @@ elements.begin_game_buttom.addEventListener("touchstart",function(e){
 //点击回到开始界面
 elements.bac_to_begin.addEventListener("touchstart",function(e){
 	e.stopPropagation();
-	elements.pop2.style.top = (-1* document.documentElement.heigth/2) + "px";
+	elements.pop2.style.top = (-1* document.documentElement.heigth) + "px";
 	window.location.href = "../index.html";
 })
 
 //点击再来一局
 elements.another.addEventListener("touchstart",function(e){
 	e.stopPropagation();
-	elements.pop2.style.top = (-1*document.documentElement.clientHeight/2) + "px"
+	elements.pop2.style.top = (-1*document.documentElement.clientHeight) + "px"
 	console.log(elements.pop2.style.top);
 	init();
-	
 })

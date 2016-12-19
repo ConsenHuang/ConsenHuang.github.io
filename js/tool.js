@@ -1,139 +1,119 @@
-var tool = {
-	
-	
-//获取当前页面中所有的文件夹
-  	getAllLi: function getAllLi(){
-	
-	var main_ul = document.getElementById('main_ul');
-		
-	var main_lis = main_ul.getElementsByTagName('li');
-	
-	return main_lis;
-	},
+//初始化
 
-//右键函数
-//li的右击事件
-  	RhbClic :  function RhbClic(){
-	
-					var allLis = getAllLi();
-					
-					
-					e.preventDefault();
-					
-					menu_new_file.style.display = 'block';
-					
-					menu_new_file.style.left = e.clientX + 10 +"px";
-					
-					menu_new_file.style.top = e.clientY +  10 +"px";
-					
-//					大清洗
-					for (var i = 0; i < allLis.length; i++) {
-								allLis[i].firstElementChild.style.display = "none";
-								allLis[i].firstElementChild.checked = false;
-								allLis[i].onoff = false;
-								if(onoff_img_b_and_s){
-									allLis[i].className = "mew_class_of_li_old class_one";
-								}
-								else{
-									allLis[i].className = "class_tow";
-								}
-								
-					}
-					
-					this.firstElementChild.style.display = "block";
-					this.firstElementChild.checked = true;
-					this.onoff = true;
-					if(onoff_img_b_and_s){
-						this.className = "mew_class_of_li class_one";
-					}
-					else{
-						this.className = "class_tow";
-					}
-					
-					
-					
-				
-	},
+//获取页面1中的元素
+var sections = document.getElementsByTagName("section");
+//火箭
+var rocket =document.getElementById("rocket");
+//感恩
+var thankyou = document.getElementById("thankyou");
 
-//根据页面hash值得变更,渲染页面			
- 	hasChange :  function hasChange(){
-				
-				
-			main_ul.innerHTML = "";
-			
-			var has = window.location.hash.substring(1);
-			
-			
-			
-			for (var i = 0; i < data.length; i++) {
-				
-				if(data[i].pid==has){
-					creatLi(data[i]);
+var page1 =  document.getElementById("page1");
+
+var elements = {
+	music:document.getElementById("music"),
+	musicbox:document.getElementById("musicbox"),
+	musicOff:true,
+	firstPageImgs:[
+//			"img/musicplay.png",
+//			"img/musicstop.png",
+//			"img/rocket.png",
+//			"img/stars.png",
+//			"img/thankyou.png",
+//			"img/up_ico.png",
+			"img/bg2_balls.png",
+			"img/bottom_dots.png",
+			"img/girl1.png",
+			"img/girl2.png",
+			"img/gun_man.png",
+			"img/man1.png",
+			"img/man2.png",
+			"img/miss_world.png",
+			"img/mo_shang_hua_kai.png",
+			"img/musicplay.png",
+			"img/musicstop.png",
+			"img/old_man1.png",
+			"img/rocket_3_fly.png",
+			"img/rocket_4.png",
+			"img/rocket_bottom.png",
+			"img/rocket_page2.png",
+			"img/rocket.png",
+			"img/snow.png",
+			"img/stars.png",
+			"img/thankyou_world.png",
+			"img/thankyou.png",
+			"img/thatyears.png",
+			"img/tower.png",
+			"img/up_ico.png"
+	],
+	firstPageEndNum:0,
+	innerJindu:document.getElementById("inner_jindu"),
+	jindu_box:document.getElementsByClassName("jindu_box")[0],
+	//记录手指按下开始位置和
+	starPosition:0,
+	//手指离开的结束位置
+	endPoistion:0,
+	page:1
+}
+var globleFn = {
+	_init:function init(){
+		var rocket = document.getElementById("rocket");
+		var thankyou = document.getElementById("thankyou");
+		tool.addClassName(rocket,"rocketIn");
+		tool.addClassName(thankyou,"thankyouIn");
+		tool.addClassName(page1,"page1In");
+	},
+	_onload:function(){
+		var n = 0;
+		for (var i = 0; i < elements.firstPageImgs.length; i++) {
+			var img = document.createElement("img");
+			img.src = elements.firstPageImgs[i];
+			img.onload = function(){
+				elements.firstPageEndNum++;
+				elements.innerJindu.style.width =(parseInt((elements.firstPageEndNum/elements.firstPageImgs.length)*100)) + "%";
+				if(elements.firstPageEndNum==elements.firstPageImgs.length){
+					elements.jindu_box.style.display = "none";
 				}
+				console.log();
 			}
-	},
-	
-//	获取#id下有这个className的那个元素
-	hasName : function hasName(id,name){
 		
-			return document.querySelector(id+" "+name);
-	},
-//	全选函数
-	checkAll:function(e){
-		if(e){
-			e.stopPropagation();
 		}
-		var lis = tool.getAllLi();
-//		切换是否选择的开关
-		if(content.checkedAll==false){
-			content.btn_checkedAll.className = "";
-			$("#part_file li").find("span").css({
-				"display":"none"
-			})
-			$("#part_file li").find("span").removeClass();
-			$("#part_file li").find("span").addClass("No_chedked");
-			$("#main_ul li").css({
-				 "border": "2px solid transparent"
-			})
-			for(var i=0;i<lis.length;i++){
-                lis[i].onoff = false;
-			}
-		}
-		else{
-			content.btn_checkedAll.className = "is_checked";
-			$("#part_file li").find("span").css({
-				"display":"block"
-			})
-			$("#part_file li").find("span").removeClass();
-			$("#part_file li").find("span").addClass("is_checked");
-			$("#main_ul li").css({
-				 "border": "2px solid blue"
-			})
-            for(var i=0;i<lis.length;i++){
-                lis[i].onoff = true;
-            }
-		}
-		
-	},
-    newFly: function newFly(wrap){
-    var wrap = document.getElementsByClassName("wrap")[0];
-    var div= document.createElement("div");
-    div.className = "fly_star";
-    // 流星开始时候的top值
-    var T = (-10*Math.random() - 10 )+"px";
-    var L = document.documentElement.clientWidth*(Math.round(Math.random()*(-100)+100)/100)+"px";
-    var maxL =parseInt(L) *76/100;
-
-    if(parseFloat(L)>maxL){
-        L=maxL+"px";
-    }
-    div.style.top = T;
-    div.style.left = L;
-    wrap.appendChild(div);
-    div.timer = setInterval(function () {
-        wrap.removeChild(div);
-        clearInterval(div.timer);
-    },1500)
+	}
 }
 
+var tool = {
+//	新增的名字,传入名字的格式，元素名字，类名字例子：box，n1
+	addClassName:function(element,addname){
+		var oldClassName = element.className;
+		var re = new RegExp(addname);
+		
+		if(oldClassName.search(re)!=-1){
+			return;
+		}else{
+			var newClassName = oldClassName + " "+addname;
+			element.className = newClassName;
+		}
+		
+	},
+//	删除的名字，传入名字的格式，元素名字，类名字例子：box，n1
+	removeClassName:function(element,removename){
+		var oldClassName = element.className;
+		var arrClassName = oldClassName.split(" ");
+		for (var i = 0; i < arrClassName.length; i++) {
+			if(arrClassName[i]==removename){
+				arrClassName.splice(i,1);
+				i--;
+			}
+		}
+		var newClassName = arrClassName.join(" ");
+		element.className = newClassName;
+		
+	},
+//	将element下所有的节点元素的opacity值设置为1;
+	setOpacity:function(_element){
+		var elements = _element.children;
+		for (var i = 0; i < elements.length; i++) {
+			elements[i].style.opacity = 1;
+		}
+	},
+	
 }

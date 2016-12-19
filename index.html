@@ -2,182 +2,104 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>云盘主页</title>
-		<link href="css/css.css" rel="stylesheet"/>
-		<link href="css/active.css" rel="stylesheet" />
+		<title>手机打怪物</title>
+		<link href="css/reset.css" rel="stylesheet" type="text/css" />
+		<link href="css/animation.css" rel="stylesheet" type="text/css" />
+		<link href="css/conment.css" rel="stylesheet" type="text/css" />
+		<link href="css/page3_animation.css" rel="stylesheet" type="text/css"/>
+		<link href="css/page1.css" rel="stylesheet" type="text/css" />
+		<link href="css/page2.css" rel="stylesheet" type="text/css" />
+		<link href="css/page3.css" rel="stylesheet" type="text/css" />
+		<link href="css/page4.css" rel="stylesheet" type="text/css" />
+		<script>
+//		设置端口适配
+		var scale = 1/window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,initial-scale='+scale+',minimum-scale='+scale+',maximum-scale='+scale+',user-scalable=no" />');
+        (function(){
+            var html = document.getElementsByTagName("html")[0];
+            html.style.fontSize = html.clientWidth/16+"px";
+        })();
+        </script>
 	</head>
-	<body class="wrap">
-	<div class="cue">创建成功 </div>
-		<header class="top">
-			<!--左边头部-->
-			<div class="left_hearder clearfix">
-				<span class="bai_du_ico rela">
-					<span class="ab wo_de_yun">
-						我的云
-					</span>
-				</span>
+	<body>
+	<script>
+//	初始化页面高度
+		document.body.style.height = document.documentElement.clientHeight + "px";
+	</script>
+	<!--第一版画面-->
+		<section class="page1 page" id="page1">
+			<!--中间圆圈-->
+			<div class="page1_cercle">
+				
+			</div>
+			<!--大星星，小星星背景图片-->
+			<div class="srars"></div>
+			<!--火箭div-->
+			<div id="rocket"></div>
+			<div id="thankyou"></div>
+			
+			
+			
+		</section>
+		
+	<!--第二版画面-->
+		<section class="page2 page" id="page2">
 
-			</div>
-			<!--右边头部-->
-			<div class="right_header right clearfix">
-					<input type="text" placeholder="搜索你的文件" class="inp_sousuo left"/>
-					<input type="button" value="搜索" class="left inp_sousuo1"/>
-				<a href="http://help.baidu.com/">
-					会员中心
-				</a>
-				<a  href="http://rj.baidu.com/soft/detail/35013.html?ald">
-					客户端下载
-				</a>
-			</div>
+			<div id="bg2_balls"></div>
+			<div id="tower"></div>
+			<div id="rocket_2"></div>
+			<div id="miss_world"></div>
+			<div id="thankyou_world" ></div>
+			<div id="gunman"></div>
+			<div class="bg2_cercle"></div>
+			<div id="snow"></div>
 			
-		</header>
-		<!--头部结束-->
+		</section>
 		
-		<!--左边栏-->
-		<!--各个sp都对应精灵图,js董涛效果时候切换对应的类名，产生切换效果-->
-		<div class="aotu clearfix">
-		<nav class="nav_left left" id="nav_left">
-			
-		</nav>
-		
-		<!--总内容区域-->
-		<div class="content clearfix" id="content">
-			<div class="line1 clearfix">
+		<!--第三屏幕画面-->
+		<section class="page3 page" id="page3">
+			<div class="bg3_cercle">
 				
-				<div class="left d2" id="d2">
-					<span class="new_file"></span>
-					<span>新建文件夹</span>
-				</div>
+			</div>
+			<div id="na_xie_nian" ></div>
+			<div id="mo_shang_hua_kai" ></div>
+			<div id="snow_3"></div>
+			<div id="girl1" ></div>
+			<div id="oldman" ></div>
+			<div id="man1" ></div>
+			<div id="girl2" ></div>
+			<div id="man2" ></div>
+			<div id="rocket_3" ></div>
+			<div id="rotket_bottom" ></div>
+			<div id="bottom_dots"></div>
+		</section>
+		<!--第四屏画面-->
+		<section class="page4 page" id="page4">
+			<div class="bg3_cercle bg4_cercle">
 				
-				
-				<div class="d5 left" id="d5">
-					<span class="delet"></span>
-					删除文件
-				</div>
-				<div class="left d2" id="d3">
-					<span class="my_machine"></span>
-					<span>移动到</span>
-				</div>
-				<div class="left d2" id="d4">
-					<span class="rename"></span>
-					<span>重命名</span>
-				</div>
-				<!--这个div包含住选中后出现的那些div-->
-
 			</div>
-			<div class="all">
-				<span>全部文件</span>
-				<span class="right all_right">已全部加载，共9个</span>
+			<div class="rocket_4">
+				<div id="intry">进入游戏</div>
 			</div>
-			<div id="roude">
-				
-				<span id="all_load" style="text-decoration: underline;color: blue; cursor: pointer;font:bold 14px 微软雅黑">
-					全部文件 
-				</span>
-				<span>||&nbsp;</span>
-
+			<div class="discription">
+				点击进入游戏<br />
+				enjoy我的作品O(∩_∩)O~
 			</div>
-			
-			<div class="ch">
-				<span id="chec_all">
-					<span id="ccc" class="_is_checked"></span>
-					<span>全选</span>
-				</span>
+		</section>
+		<!--进度条-->
+		<div class="jindu_box">
+				<div id="worl_inner_jindu">加载中...</div>
+				<div id="inner_jindu"></div>
 			</div>
-				<div id="part_file">
-					<!--这里是li区域-->
-					<ul class="clearfix" id="main_ul">
-						</ul>
-				</div>
+		<!--底部向上滑提示按键-->
+		<div class="arrive"></div>
+		<!--音乐播放图标-->
+		<div id="music" class="play">
+			<audio id="musicbox" src="music/S5.mp3" autoplay="true"></audio>
 		</div>
-		</div>
-		<!--这个是右键出现的html-->
-		<ul id="menu_new_file">
-			<li id="open_film">打开(O)</li>
-			<li>下载</li>
-			<li>推送到设备&nbsp;▶</li>
-			<li>复制到</li>
-			<li id="move_to">移动到</li>
-			<li>重命名</li>
-			<li>删除</li>
-			<li>历史版本</li>
-		</ul>
-		
-		<div id="bax_move">
-			<div class="one_line clearfix">
-				<span class="left md">
-					移动到
-				</span>
-				<span class="right" id="cc">
-					×
-				</span>
-			</div>
-			<ul id="move_ul" class="clearfix">
-				<!--<li>1200</li>-->
-			</ul>
-			
-			<div class="d6" id="d6">
-				确定
-			</div>
-			
-			<div class="d7" id="d7">
-				取消
-			</div>
-			
-		</div>
-		
-		<!--这个div是提示用户是否按默认命名-->
-		<div id="warming">
-				<p><span>亲~~~</span> 确定要删除所选择的文件吗？</p>
-				<div class="yew_no">
-					<span class="confirm_yes">确定</span>
-					<span class="confirm_no">取消</span>
-				</div>
-		</div>
-		
-		<div class="small_ul">
-			<span class="cha_cha">
-				×
-			</span>
-			<ul class="real_small_ul">
-				<li>
-					<span class="img_small_li"></span>
-					<span class="world_small_span">
-						第一个
-					</span>
-				</li><li>
-					<span class="img_small_li"></span>
-					<span class="world_small_span">
-						第一个
-					</span>
-				</li>
-				<li>
-					<span class="img_small_li"></span>
-					<span class="world_small_span">
-						第一个
-					</span>
-				</li>
-				<li>
-					<span class="img_small_li"></span>
-					<span class="world_small_span">
-						第一个
-					</span>
-				</li>
-			</ul>
-			<span class="_confirm_yes">确定</span>
-			<span class="_confirm_no quxiao_small_lis">取消</span>
-		</div>
-		
-		
-		<script src="js/jquery-3.1.1.min.js"></script>
-		<script src="js/datas.js"></script>
-		
+		<script src="js/m.touch.js"></script>
 		<script src="js/tool.js"></script>
-		
-		<script src="js/fn.js"></script>
-		
+		<script src="js/wiperFunctions.js"></script>
 		<script src="js/index.js"></script>
-		
-
 	</body>
 </html>

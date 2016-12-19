@@ -143,15 +143,21 @@ creatNum();
 //创建小怪物在画布上面
 //创建第一只小怪物	传入的参数:{type:1,canvasId:"can",id:new Date(),x:50,y:50,w:108,y:113}
 //怪物类
+//console.log(window.getComputedStyle(document.documentElement)["fontSize"])
 function Monster(_option){
+	
+		
 //		type是怪物的类型	
 		this._option = _option;
 		this._type = tool.getRandom(1,4);
 //		x,y对应怪物生成时候的的圆心位置
 		this.x = null;
 		this.y = null;
-		
-		
+		 
+//		根据设备的不同大小,调节响应的小怪参数;基于ipho5来做的，所以用rem/40来进行缩放
+		this.scale = (parseFloat(window.getComputedStyle(document.documentElement)["fontSize"]))/40;
+		var _that = this;
+//		console.log(_that.scale);
 //		用来存储创建出来之后,这个小怪物的一些属性:id,当前运动的位置,是哪一张图片等
 		this._obj = {};
 		
@@ -171,7 +177,7 @@ function Monster(_option){
 		this.distance = ( (this.max_x - this.min_x) + (this.max_y - this.min_x) ) * 2;
 		
 //		怪物走一圈的时间，关数增加，速度加快
-		this.roundT = 80000;
+		this.roundT = 60000 * this.scale;
 		this.speed = 18;
 		this.change1 = 3;
 		this.change = null;
@@ -183,36 +189,36 @@ function Monster(_option){
 		}
 		
 //		 怪物运动的半径
-		this.R = this._option.R||300;
-		this.angle = this._option.angle||30;
+		this.R = this._option.R*this.scale||300;
+		this.angle = this._option.angle*this.scale||30;
 		this.angleChange = this._option.angleChange||1;
 		
 //		side表示怪物在哪一条边上面生成 
 		this.side = tool.getRandom(1,4);
 //		不同类型,对应不同四张小怪的图片大小
 		if(this._type==1){
-			this.imgType.w = 108;
-			this.imgType.h = 113;
-			this.imgDeathType.w = 180;
-			this.imgDeathType.h = 138;
+			this.imgType.w = 108*this.scale;
+			this.imgType.h = 113*this.scale;
+			this.imgDeathType.w = 180*this.scale;
+			this.imgDeathType.h = 138*this.scale;
 		}
 		else if(this._type==2){
-			this.imgType.w = 109;
-			this.imgType.h = 112;
-			this.imgDeathType.w = 146;
-			this.imgDeathType.h = 80;
+			this.imgType.w = 109*this.scale;
+			this.imgType.h = 112*this.scale;
+			this.imgDeathType.w = 146*this.scale;
+			this.imgDeathType.h = 80*this.scale;
 		}
 		else if(this._type==3){
-			this.imgType.w = 107;
-			this.imgType.h = 129;
-			this.imgDeathType.w = 103;
-			this.imgDeathType.h = 96;
+			this.imgType.w = 107*this.scale;
+			this.imgType.h = 129*this.scale;
+			this.imgDeathType.w = 103*this.scale;
+			this.imgDeathType.h = 96*this.scale;
 		}
 		else if(this._type==4){
-			this.imgType.w = 127;
-			this.imgType.h = 110;
-			this.imgDeathType.w = 92;
-			this.imgDeathType.h = 108;
+			this.imgType.w = 127*this.scale;
+			this.imgType.h = 110*this.scale;
+			this.imgDeathType.w = 92*this.scale;
+			this.imgDeathType.h = 108*this.scale;
 		}
 //		把小怪物的圆心初始化
 		this.beginPosition();
@@ -394,11 +400,12 @@ can.addEventListener("touchstart",function(e){
 	var user_x = e.changedTouches[0].pageX;
 	var user_y = e.changedTouches[0].pageY;
 	for (var i = 0; i < mons.length; i++) {
+		console.log(mons)
 //		获取mons里面的第i个在画布中的位置:_x,_y,用来与当前用户点击时候的手指所在位置
-		var mons_i_x =  parseInt(jc("#"+mons[i]._id)._x);
-		var mons_i_y =  parseInt(jc("#"+mons[i]._id)._y);
-		var mons_i_w =  jc("#"+mons[i]._id)._swidth ;
-		var mons_i_h =  jc("#"+mons[i]._id)._sheight ;
+		var mons_i_x =  parseFloat(jc("#"+mons[i]._id)._x);
+		var mons_i_y =  parseFloat(jc("#"+mons[i]._id)._y);
+		var mons_i_w =  jc("#"+mons[i]._id)._width ;
+		var mons_i_h =  jc("#"+mons[i]._id)._height ;
 		if( user_x >= mons_i_x - rong_cuo && user_x <= (mons_i_x + mons_i_w + rong_cuo) && user_y >= mons_i_y - rong_cuo&& user_y <= (mons_i_y +mons_i_h + rong_cuo)){
 			
 //			将杀死怪物数量更新

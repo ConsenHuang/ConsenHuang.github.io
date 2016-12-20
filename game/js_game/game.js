@@ -19,6 +19,22 @@ var elements = {
 	inner_jindu:document.querySelector("#inner_jindu"),
 //	装进度条的box
 	jindu_box:document.querySelector("#jindu_box"),
+	
+//	评价
+	ping_jia :document.querySelector("#ping_jia"),
+	
+//	评价库
+	src_ping_jia:[
+//		杀死10只以内的怪物 
+		"我去~!",
+//		10-30只
+		"好手速!",
+//		"30-60只"
+		"黄金手",
+//		60-100
+		"大神!"
+		
+	],
 //	图片库
 	imgs:[
 		"img_game/begin_game.png",
@@ -36,7 +52,6 @@ var elements = {
 		"img/up_ico.png"
 	]
 }
-
 //初始化进度条
 function _load(){
 		var n = 0;
@@ -50,7 +65,8 @@ function _load(){
 					elements.jindu_box.style.display = "none";
 					//初始化,当图片加载完成了的时候,让游戏说明弹出来
 					setTimeout(function(){
-						elements.pop.style.top = (document.documentElement.clientHeight/2  -  parseInt(getComputedStyle(pop).height) ) + "px";
+						elements.pop.style.transform = "translateY("+(document.documentElement.clientHeight/2)+"px)"
+						elements.pop.style.webkitTransform = "translateY("+(document.documentElement.clientHeight/2)+"px)";
 					},500)
 				}
 			}
@@ -156,6 +172,9 @@ function Monster(_option){
 		 
 //		根据设备的不同大小,调节响应的小怪参数;基于ipho5来做的，所以用rem/40来进行缩放
 		this.scale = (parseFloat(window.getComputedStyle(document.documentElement)["fontSize"]))/40;
+		if(this.scale<1){
+			this.scale = 1/this.scale;
+		}
 		var _that = this;
 //		console.log(_that.scale);
 //		用来存储创建出来之后,这个小怪物的一些属性:id,当前运动的位置,是哪一张图片等
@@ -177,9 +196,10 @@ function Monster(_option){
 		this.distance = ( (this.max_x - this.min_x) + (this.max_y - this.min_x) ) * 2;
 		
 //		怪物走一圈的时间，关数增加，速度加快
-		this.roundT = 60000 * this.scale;
-		this.speed = 18;
-		this.change1 = 3;
+		this.roundT = 70000 * this.scale;
+		this.speed = 10;
+		
+		this.change1 = 3 * this.scale;
 		this.change = null;
 		if(this._option.clockWise){
 			this.change = this.distance/(this.roundT/this.speed );
@@ -411,7 +431,7 @@ can.addEventListener("touchstart",function(e){
 //			将杀死怪物数量更新
 			current_num++;
 //			加一秒钟
-			current_time++;
+//			current_time++;
 			n++;
 			num_monster_2.innerHTML = current_num;
 			
@@ -432,7 +452,7 @@ can.addEventListener("touchstart",function(e){
 can.addEventListener("touchend",function(e){
 	setTimeout(function(){
 		tool.removeClassName(page_game,"shake");
-	},150)
+	},300)
 		
 })
 
@@ -455,6 +475,18 @@ function Next(){
 	
 	
 	num_customs.innerHTML = "第"+(passNum+1)+"关";
+	if(current_num<10){
+		elements.ping_jia.innerHTML = elements.src_ping_jia[0];
+	}
+	if(current_num>=10&&current_num<30){
+		elements.ping_jia.innerHTML = elements.src_ping_jia[1];
+	}
+	if(current_num>=30&&current_num<60){
+		elements.ping_jia.innerHTML = elements.src_ping_jia[2];
+	}
+	if(current_num>=60){
+		elements.ping_jia.innerHTML = elements.src_ping_jia[3];
+	}
 	setTimeout(function(){
 		for (var i = 0; i < arrNum[passNum]; i++) {
 			var clockWise = true;
@@ -495,7 +527,9 @@ function init(){
 			}
 			mons = [];
 //			结束界面弹出来
-			elements.pop2.style.top = (document.documentElement.clientHeight/2 - parseInt(getComputedStyle(elements.pop2).height)/2) + "px"; 
+			elements.pop2.style.transform = "translateY("+(document.documentElement.clientHeight/2) + "px)";
+			elements.pop2.style.webkitTransform = "translateY("+(document.documentElement.clientHeight/2) + "px)";
+			
 //			设置结束关数
 			elements.ending_guan_shu.innerHTML = passNum + 1;
 //			杀死怪物的数量
@@ -505,18 +539,19 @@ function init(){
 		}
 	},1000)
 }
-//console.log(parseInt(getComputedStyle(elements.pop2).height)/2) ;
-
-
 
 //点击开始游戏
 elements.begin_game_buttom.addEventListener("touchstart",function(e){
 	e.stopPropagation();
 	elements.begin_game_buttom.style.animation = "beginGame 1s";
+	elements.begin_game_buttom.style.webkitAnimation = "beginGame 1s";
 	setTimeout(function(){
-		elements.begin_game_buttom.style.animation = "";
+		elements.begin_game_buttom.style.transform = "";
+		elements.begin_game_buttom.style.webkitTransform = "";
 	},1500);
-	elements.pop.style.top = (-1*document.documentElement.clientHeight) + "px"
+//	pop1弹回去
+	elements.pop.style.transform = "translateY(0)";
+	elements.pop.style.webkitTransform = "translateY(0)";
 	//执行函数,开启游戏
 	init();
 });
@@ -524,14 +559,13 @@ elements.begin_game_buttom.addEventListener("touchstart",function(e){
 //点击回到开始界面
 elements.bac_to_begin.addEventListener("touchstart",function(e){
 	e.stopPropagation();
-	elements.pop2.style.top = (-1* document.documentElement.heigth) + "px";
 	window.location.href = "../index.html";
 })
 
 //点击再来一局
 elements.another.addEventListener("touchstart",function(e){
 	e.stopPropagation();
-	elements.pop2.style.top = (-1*document.documentElement.clientHeight) + "px"
-	console.log(elements.pop2.style.top);
+	elements.pop2.style.transform = "translateY(0)";
+	elements.pop2.style.webkitTransform = "translateY(0)";
 	init();
 })

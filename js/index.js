@@ -55,7 +55,11 @@ var page2 = document.querySelector("#page2");
 var page1 = document.querySelector("#page1");
 var intry = document.querySelector("#intry");
 
+document.addEventListener("touchmove",function(e){
+	e.preventDefault();
+})
 document.addEventListener("touchstart",function(e){
+	e.preventDefault();
 	elements.starPosition = e.changedTouches[0].pageY;
 })
 document.addEventListener("touchend",function(e){
@@ -118,12 +122,22 @@ document.addEventListener("touchend",function(e){
 
 intry.addEventListener("touchend",function(e){
 	e.stopPropagation();
+	e.preventDefault();
 	this.style.animation = "beginGame 0.5s";
+	this.style.webkitAnimation = "beginGame 0.5s";
 	
 	
 })
 intry.addEventListener("animationend",function(e){
 	e.stopPropagation();
+	e.preventDefault();
+	this.style.animation = "";
+	window.location.href = "game/index.html";
+})
+//兼容处理
+intry.addEventListener("webkitAnimationEnd",function(e){
+	e.stopPropagation();
+	e.preventDefault();
 	this.style.animation = "";
 	window.location.href = "game/index.html";
 })

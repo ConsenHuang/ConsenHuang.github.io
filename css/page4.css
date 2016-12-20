@@ -38,8 +38,11 @@
 .page4In {
   animation: page4In 2s;
   animation-fill-mode: forwards;
-  z-index: 9998;
   animation-delay: 0.4s;
+  z-index: 9998;
+  -webkit-animation: page4In 2s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.4s;
 }
 .page4Out {
   z-index: 9;
@@ -52,11 +55,21 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes page4In {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .beginGame {
   animation: beginGame 0.5s;
+  -webkit-animation: beginGame 0.5s;
 }
 .removeBeginGame {
   animation: removeBeginGame 0.5s;
+  -webkit-animation: removeBeginGame 0.5s;
 }
 @keyframes beginGame {
   from {
@@ -67,7 +80,24 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes beginGame {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
 @keyframes removeBeginGame {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes removeBeginGame {
   from {
     opacity: 1;
   }

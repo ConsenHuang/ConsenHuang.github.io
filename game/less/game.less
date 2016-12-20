@@ -1,4 +1,7 @@
 @r:40rem;
+body{
+    background-color:#2c3f7e;
+}
 .page3{
   background-color:#2d4081 ;
   z-index: 1;
@@ -38,6 +41,7 @@
 .stop{
      background: url(../img/musicstop.png) no-repeat;
      animation: none;
+     -webkit-animation: none;
 }
 @keyframes music{
      0%{
@@ -131,12 +135,12 @@
 }
 .shake{
     animation:no_touch 0.1s linear;
+    -webkit-animation:no_touch 0.1s linear;
 }
 @keyframes no_touch{
-    0%{
+     0%{
         transform:translateX(-40px);
         
-        background-color:rgba(255,0,0,0.5);
     }
     10%{
          transform:translateY(-40px);
@@ -168,22 +172,60 @@
     100%{
         transform: translateX(0px);
         transform: translateY(0px);
-        background-color:none;
         
     }
     
 }
+@-webkit-keyframes no_touch{
+    0%{
+        -webkit-transform:translateX(-40px);
+        
+    }
+    10%{
+         -webkit-transform:translateY(-40px);
+    }
+    20%{
+        -webkit-transform: translateY(30px);
+    }
+    30%{
+        -webkit-transform: translateX(40px);
+    }
+    40%{
+         -webkit-transform: translateX(-8px);
+    }
+    50%{
+        -webkit-transform: translateY(-20px);
+    }
+    60%{
+         -webkit-transform: translateY(20px);
+    }
+    70%{
+        -webkit-transform: translateY(30px);
+    }
+    80%{
+        -webkit-transform: translateX(40px);
+    }
+    90%{
+         -webkit-transform: translateX(-20px);
+    }
+    100%{
+        -webkit-transform: translateX(0px);
+        -webkit-transform: translateY(0px);
+        
+    }
+}
 #pop{
     width: 420/@r;
     height: 478/@r;
-//  background-color:#ec636d;
     background-image:url(../img_game/begin_game.png);
     background-size:cover;
     position:absolute;
     z-index:100;
     left:108/@r;
-    top:-1020/@r;
+    top:-480/@r;
     transition:1s;
+    transform:translateY(0);
+    -webkit-transform:translateY(0);
 }
 #pop2{
     width: 420/@r;
@@ -194,8 +236,10 @@
     position:absolute;
     z-index:100;
     left:108/@r;
-    top:-1020/@r;
+    top:-540/@r;
     transition:1s;
+    transform:translateY(0);
+    -webkit-transform:translateY(0);
 }
 #begin_game_buttom,.begin_game_buttom{
     width: 262/@r;
@@ -243,7 +287,24 @@
          opacity: 0;
     }
 }
+@-webkit-keyframes beginGame{
+    from{
+        transform: scale(1);
+    }
+    to{
+         transform: scale(1.5);
+         opacity: 0;
+    }
+}
 @keyframes removeBeginGame{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-webkit-keyframes removeBeginGame{
     from{
         opacity: 1;
     }
@@ -287,3 +348,4 @@
     font-weight:bold;
     
 }
+

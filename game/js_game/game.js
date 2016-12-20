@@ -196,22 +196,27 @@ function Monster(_option){
 		this.distance = ( (this.max_x - this.min_x) + (this.max_y - this.min_x) ) * 2;
 		
 //		怪物走一圈的时间，关数增加，速度加快
-		this.roundT = 70000 * this.scale;
+		this.roundT = 40000 * this.scale;
 		this.speed = 10;
 		
-		this.change1 = 3 * this.scale;
-		this.change = null;
+//		每30毫秒转动的角度
+		this.angleChange = this._option.angleChange * this.scale||2;
+//		change1作用:直行的时候,速度,这个参数不要变
+		this.change1 = 3 * this.distance/(this.roundT/this.speed );
+		
+//		如果是真值,则顺时针旋转,如果为负值,则逆时针旋转
 		if(this._option.clockWise){
-			this.change = this.distance/(this.roundT/this.speed );
+			this.angleChange = this.angleChange;
 		}
 		else{
-			this.change = (-1)* this.distance/(this.roundT/this.speed );
+			this.angleChange = (-1)*  this.angleChange;
 		}
 		
 //		 怪物运动的半径
 		this.R = this._option.R*this.scale||300;
+		
+//		angle怪物生成时候,对应圆心的角度
 		this.angle = this._option.angle*this.scale||30;
-		this.angleChange = this._option.angleChange||1;
 		
 //		side表示怪物在哪一条边上面生成 
 		this.side = tool.getRandom(1,4);
@@ -250,6 +255,7 @@ function Monster(_option){
 			_that.Run();
 		},_that.speed)
 		
+		console.log(_that.scale);
 //		console.log(this);
 //		setTimeout(function(){
 //			_that.death();
@@ -351,7 +357,7 @@ Monster.prototype.Run = function(){
 				}
 			}
 			var _that = this;
-			this.angle += this.change * 3/(180/Math.PI);
+			this.angle += this.angleChange * _that.scale/(180/Math.PI);
 			var real_x = this.x + this.R* Math.cos(_that.angle);
 			var real_y = this.y + this.R* Math.sin(_that.angle);
 			
@@ -489,10 +495,12 @@ function Next(){
 	}
 	setTimeout(function(){
 		for (var i = 0; i < arrNum[passNum]; i++) {
-			var clockWise = true;
+			var clockWise = tool.getRandom(-2,2);
 			var R = tool.getRandom(300,600);
+			var angleChange = passNum * (1 / 20) + 1.8;
 			if(i%2){clockWise = false};
-			mons[i] = new Monster({"canvasId":"can","clockWise":clockWise,R:tool.getRandom(260,400),angle:tool.getRandom(1,300),angleChange:1});
+//			if(window.getComputedStyle(document.documentElement)["fontSize"])
+			mons[i] = new Monster({"canvasId":"can","clockWise":clockWise,R:tool.getRandom(260,400),angle:tool.getRandom(1,300),angleChange:angleChange});
 		}
 	},500)
 //	console.log(mons);

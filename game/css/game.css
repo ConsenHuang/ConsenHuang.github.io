@@ -1,9 +1,11 @@
 body {
   background-color: #2c3f7e;
+  overflow: hidden;
 }
 .page3 {
   background-color: #2d4081 ;
   z-index: 1;
+  overflow: hidden;
 }
 .page {
   width: 100%;

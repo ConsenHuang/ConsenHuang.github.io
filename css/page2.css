@@ -1,6 +1,7 @@
 .page2 {
   background-color: #5f4ac3 ;
   z-index: 12;
+  overflow: hidden;
 }
 .bg2_cercle {
   position: absolute;

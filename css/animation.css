@@ -1,6 +1,7 @@
 /*火箭入场*/
 @keyframes rocketIn {
   from {
+  	
     transform: translateX(-20rem) translateY(20rem);
   }
   to {
@@ -10,10 +11,10 @@
 }
 @-webkit-keyframes rocketIn {
   from {
-    transform: translateX(-20rem) translateY(20rem);
+    -webkit-transform: translateX(-20rem) translateY(20rem);
   }
   to {
-    transform: translateX(0rem) translateY(0rem);
+    -webkit-transform: translateX(0rem) translateY(0rem);
     opacity: 1;
   }
 }
@@ -30,11 +31,11 @@
 }
 @-webkit-keyframes rocketOut {
   from {
-    transform: translateX(0rem) translateY(0rem);
+    -webkit-transform: translateX(0rem) translateY(0rem);
     opacity: 1;
   }
   to {
-    transform: translateX(10rem) translateY(-10rem);
+    -webkit-transform: translateX(10rem) translateY(-10rem);
     opacity: 0;
   }
 }
@@ -51,11 +52,11 @@
 }
 @-webkit-keyframes thankyouIn {
   from {
-    transform: translateY(7.5rem);
+    -webkit-transform: translateY(7.5rem);
     opacity: 0;
   }
   to {
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
     opacity: 1;
   }
 }
@@ -72,11 +73,11 @@
 }
 @-webkit-keyframes thankyouOut {
   from {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
     opacity: 1;
   }
   to {
-    transform: translateY(7.5rem);
+    -webkit-transform: translateY(7.5rem);
     opacity: 0;
   }
 }
@@ -93,11 +94,11 @@
 }
 @-webkit-keyframes arrive {
   0% {
-    transform: translateY(2.5rem);
+    -webkit-transform: translateY(2.5rem);
     opacity: 0;
   }
   100% {
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
     opacity: 1;
   }
 }
@@ -113,11 +114,11 @@
 }
 @-webkit-keyframes arrive {
   0% {
-    transform: translateY(2.5rem);
+    -webkit-transform: translateY(2.5rem);
     opacity: 0;
   }
   100% {
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
     opacity: 1;
   }
 }
@@ -132,10 +133,10 @@
 }
 @-webkit-keyframes music {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
   }
 }
 @keyframes page1In {
@@ -173,14 +174,14 @@
 @-webkit-keyframes gunmanIn {
   0% {
     opacity: 0 ;
-    transform: scale(0);
+    -webkit-transform: scale(0);
   }
   100% {
     opacity: 1 ;
-    transform: scale(1);
+    -webkit-transform: scale(1);
   }
 }
-@keyframes gunman {
+@keyframes gunmanIn {
   0% {
     opacity: 0 ;
     transform: scale(0);
@@ -192,11 +193,11 @@
 }
 @-webkit-keyframes gunmanOut {
   0% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
   }
   100% {
     opacity: 0 ;
-    transform: scale(2);
+    -webkit-transform: scale(2);
   }
 }
 @keyframes gunmanOut {
@@ -210,12 +211,12 @@
 }
 @-webkit-keyframes thankyou_worldIn {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
     opacity: 0 ;
   }
   100% {
     opacity: 1 ;
-    transform: scale(1);
+    -webkit-transform: scale(1);
   }
 }
 @keyframes thankyou_worldIn {
@@ -237,7 +238,7 @@
 @-webkit-keyframes thankyou_worldOut {
   100% {
     opacity: 0;
-    transform: translateY(0.9rem);
+    -webkit-transform: translateY(0.9rem);
   }
 }
 @keyframes towerIn {
@@ -251,10 +252,10 @@
 }
 @-webkit-keyframes towerIn {
   0% {
-    transform: translateY(25rem);
+    -webkit-transform: translateY(25rem);
   }
   100% {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
     opacity: 1;
   }
 }
@@ -271,11 +272,11 @@
 @-webkit-keyframes rocket_2In {
   0% {
     opacity: 0;
-    transform: translateY(25rem);
+    -webkit-transform: translateY(25rem);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
   }
 }
 @keyframes miss_worldIn {
@@ -349,21 +350,21 @@
 @-webkit-keyframes snowIn {
   0% {
     opacity: 0;
-    transform: translateY(12.5rem);
+    -webkit-transform: translateY(12.5rem);
   }
   100% {
     opacity: 1;
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
   }
 }
 @-webkit-keyframes snowOut {
   0% {
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
     opacity: 1;
   }
   100% {
     opacity: 1;
-    transform: translateY(12.5rem);
+    -webkit-transform: translateY(12.5rem);
   }
 }
 @keyframes snowOut {

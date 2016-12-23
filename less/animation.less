@@ -12,10 +12,10 @@
 }
 @-webkit-keyframes rocketIn {
   from {
-    transform: translateX(-20rem) translateY(20rem);
+    -webkit-transform: translateX(-20rem) translateY(20rem);
   }
   to {
-    transform: translateX(0rem) translateY(0rem);
+    -webkit-transform: translateX(0rem) translateY(0rem);
     opacity: 1;
   }
 }
@@ -32,11 +32,11 @@
 }
 @-webkit-keyframes rocketOut {
    from {
-    transform: translateX(0rem) translateY(0rem);
+    -webkit-transform: translateX(0rem) translateY(0rem);
     opacity: 1;
   }
   to {
-    transform: translateX(10rem) translateY(-10rem);
+    -webkit-transform: translateX(10rem) translateY(-10rem);
     opacity: 0;
   }
 }
@@ -55,11 +55,11 @@
 }
 @-webkit-keyframes thankyouIn {
   from {
-    transform: translateY(7.5rem);
+    -webkit-transform: translateY(7.5rem);
     opacity: 0;
   }
   to {
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
     opacity: 1;
   }
 }
@@ -76,11 +76,11 @@
 }
 @-webkit-keyframes thankyouOut {
   from {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
     opacity: 1;
   }
   to {
-    transform: translateY(7.5rem);
+    -webkit-transform: translateY(7.5rem);
     opacity: 0;
   }
 }
@@ -97,11 +97,11 @@
 }
 @-webkit-keyframes arrive {
   0% {
-    transform: translateY(2.5rem);
+    -webkit-transform: translateY(2.5rem);
     opacity: 0;
   }
   100% {
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
     opacity: 1;
   }
 }
@@ -118,11 +118,11 @@
 }
 @-webkit-keyframes arrive {
   0%{
-    transform: translateY(100/@r);
+    -webkit-transform: translateY(100/@r);
     opacity: 0;
   }
   100%{
-    transform:translateY(0/@r);
+    -webkit-transform:translateY(0/@r);
     opacity: 1;
   }
 }
@@ -137,10 +137,10 @@
 }
 @-webkit-keyframes music{
   0%{
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
   100%{
-     transform: rotate(360deg);
+     -webkit-transform: rotate(360deg);
   }
 }
 //第一屏幕入场
@@ -181,14 +181,14 @@
 @-webkit-keyframes gunmanIn{
   0%{
      opacity:0 ;
-    transform:scale(0);
+    -webkit-transform:scale(0);
   }
   100%{
       opacity:1 ;
-     transform: scale(1);
+     -webkit-transform: scale(1);
   }
 }
-@keyframes gunman{
+@keyframes gunmanIn{
      0%{
       opacity:0 ;
     transform:scale(0);
@@ -201,11 +201,11 @@
 //小人出场
 @-webkit-keyframes gunmanOut{
     0%{
-         transform: scale(1);
+         -webkit-transform: scale(1);
     }
     100%{
         opacity:0 ;
-        transform: scale(2);
+        -webkit-transform: scale(2);
     }
 }
 @keyframes gunmanOut{
@@ -220,12 +220,12 @@
 //白色字出场
 @-webkit-keyframes thankyou_worldIn{
     0%{
-        transform: scale(0);
+        -webkit-transform: scale(0);
         opacity:0 ;
     }
     100%{
         opacity:1 ;
-        transform: scale(1);
+        -webkit-transform: scale(1);
     }
 }
 @keyframes thankyou_worldIn{
@@ -252,7 +252,7 @@
     }
     100%{
         opacity:0;
-        transform: translateY(36/@r);
+        -webkit-transform: translateY(36/@r);
     }
 }
 //塔入场
@@ -269,10 +269,10 @@
 @-webkit-keyframes towerIn{
      0%{
          
-         transform: translateY(1000/@r);
+         -webkit-transform: translateY(1000/@r);
     }
     100%{
-        transform: translateY(0);
+        -webkit-transform: translateY(0);
         opacity: 1;
     }
 }
@@ -294,11 +294,11 @@
 @-webkit-keyframes rocket_2In{
      0%{
          opacity: 0;
-         transform: translateY(1000/@r);
+         -webkit-transform: translateY(1000/@r);
     }
     100%{
         opacity: 1;
-        transform: translateY(0);
+        -webkit-transform: translateY(0);
     }
 }
 //火箭出场
@@ -389,22 +389,22 @@
 @-webkit-keyframes snowIn{
     0%{
          opacity: 0;
-         transform: translateY(500/@r);
+         -webkit-transform: translateY(500/@r);
     }
     100%{
        opacity: 1;
-       transform: translateY(0/@r);
+       -webkit-transform: translateY(0/@r);
     }
 }
 //雪花出场
 @-webkit-keyframes snowOut{
     0%{
-        transform: translateY(0/@r);
+        -webkit-transform: translateY(0/@r);
          opacity: 1;
     }
     100%{
        opacity: 1;
-       transform: translateY(500/@r);
+       -webkit-transform: translateY(500/@r);
     }
 }
 @keyframes snowOut{

@@ -3,6 +3,7 @@
   background-color: #243367 ;
   z-index: 9;
   opacity: 0;
+  overflow: hidden;
 }
 .bg4_cercle {
   top: 9rem;

@@ -1,4 +1,7 @@
 //初始化出场动画
+
+
+
 globleFn._init();
 //初始化进度条
 globleFn._onload();

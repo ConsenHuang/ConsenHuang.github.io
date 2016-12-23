@@ -1,6 +1,6 @@
 //初始化
-
 //获取页面1中的元素
+
 var sections = document.getElementsByTagName("section");
 //火箭
 var rocket =document.getElementById("rocket");
@@ -117,3 +117,4 @@ var tool = {
 	},
 	
 }
+

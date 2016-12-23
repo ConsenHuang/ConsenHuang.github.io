@@ -130,7 +130,7 @@ var arrNum = [];
 var mons =[];
 
 //容错处理,看看用户可以接受多少的容错
-var rong_cuo = 10;
+var rong_cuo = 24;
 //初始化画布
 function monGame(){
 	var footH = document.querySelectorAll(".foot")[0].style.height;
@@ -200,7 +200,7 @@ function Monster(_option){
 		this.speed = 10;
 		
 //		每30毫秒转动的角度
-		this.angleChange = this._option.angleChange * this.scale||2;
+		this.angleChange = this._option.angleChange||2;
 //		change1作用:直行的时候,速度,这个参数不要变
 		this.change1 = 3 * this.distance/(this.roundT/this.speed );
 		
@@ -385,11 +385,12 @@ Monster.prototype.death = function(){
 	
 		img.onload=function(){
 		    jc.start(_that._option.canvasId,60);
-		    jc.image(img,_that._img._x,_that._img._y,_that.imgDeathType.w,_that.imgDeathType.h).id("d"+_that._id);
+		    var num = tool.getRandom(-1000,1000);
+		    jc.image(img,_that._img._x,_that._img._y,_that.imgDeathType.w,_that.imgDeathType.h).id("d"+num+_that._id);
 		    jc.start(_that._option.canvasId,60);
 //		    让死了的那只小怪淡淡消失
 		    setTimeout(function(){
-		    	jc("#d"+_that._id).fadeOut(1600);
+		    	jc("#d"+num+_that._id).fadeOut(1600);
 			},200)
 		}
 		
@@ -497,7 +498,7 @@ function Next(){
 		for (var i = 0; i < arrNum[passNum]; i++) {
 			var clockWise = tool.getRandom(-2,2);
 			var R = tool.getRandom(300,600);
-			var angleChange = passNum * (1 / 20) + 1.8;
+			var angleChange = passNum * (1 / 20) + 1.2;
 			if(i%2){clockWise = false};
 //			if(window.getComputedStyle(document.documentElement)["fontSize"])
 			mons[i] = new Monster({"canvasId":"can","clockWise":clockWise,R:tool.getRandom(260,400),angle:tool.getRandom(1,300),angleChange:angleChange});
